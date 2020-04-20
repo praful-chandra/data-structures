@@ -27,10 +27,10 @@ class LinkedList {
   }
 
   insert(index, value) {
-    if (index >= this.length) {
+    if (index > this.length) {
       return this.append(value);
     }
-    if (index < 1) {
+    if (index <= 1) {
       return this.prepend(value);
     }
     let newNode = new Node(value);
@@ -48,12 +48,13 @@ class LinkedList {
   }
 
   getNodeAt(index) {
-    let count = 0;
+    let count = 1;
     let currentNode = this.head;
     while (count < index) {
-      curentNode = currentNode.next;
+      currentNode = currentNode.next;
       count++;
     }
+
     return currentNode;
   }
 
@@ -68,21 +69,91 @@ class LinkedList {
 
     console.log(data);
   }
+
+  //! O(n^2)
+  //   reverseList() {
+  //     let count = this.length - 1;
+  //     let lastNode = this.tail;
+  //     let end = this.tail;
+  //     while (count >= 0) {
+  //       let previous = this.getNodeAt(count);
+  //       lastNode.next = previous;
+  //       lastNode = previous;
+  //       count--;
+  //     }
+
+  //     this.head = end;
+  //     this.tail = lastNode;
+  //     this.tail.next = null;
+  //   }
+
+  //! O(n)
+  reverseList() {
+    this.tail = this.head;
+
+    let previousNode = null;
+    let currentNode = this.head;
+    let nextNode = null;
+
+    while (currentNode !== null) {
+      nextNode = currentNode.next;
+      currentNode.next = previousNode;
+      previousNode = currentNode;
+      currentNode = nextNode;
+    }
+
+    this.head = previousNode;
+  }
+
+  printReverse() {
+    this._recursiveReverse(this.head);
+  }
+
+  _recursiveReverse(node) {
+    if (node === null) {
+      return;
+    }
+    this._recursiveReverse(node.next);
+    console.log(node.data);
+  }
+
+  printReverseWithRecursion(){
+
+    if(this.length < 2){
+        this.printList();
+        return;
+    }
+
+      this.reverseListByRecoursion(this.head);
+
+      this.printList();
+  }
+
+  reverseListByRecoursion(node) {
+    this.tail = node;
+
+    if (node.next === null) {
+      this.head = node;
+      return;
+    }
+
+    this.reverseListByRecoursion(node.next);
+    node.next.next = node;
+    node.next = null;
+  }
 }
 
-let ll = new LinkedList("hi");
+let ll = new LinkedList(2);
 
-ll.printList();
+ll.append(3);
 
-ll.append("wassup");
-ll.printList();
+ ll.prepend(1);
 
-ll.prepend("threre");
-ll.printList();
+ ll.append(4);
 
-ll.insert(1, "one");
-ll.printList();
+ll.printList();  
+ll.printReverseWithRecursion();
 
-ll.delete(1);
+//console.log(ll);
 
-ll.printList()
+//ll.reverseList()
