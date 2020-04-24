@@ -4,14 +4,14 @@ let factorial = n =>{
     if(n < 2) return 1;
     let facto = 1;
 
-    for(let i = n ; i > 0 ;i--){
+    for(let i = n ; i >1 ;i--){
         facto *= i;
     }
 
     return facto;
 }
 
-console.log(factorial(5));
+console.log(factorial(5));  
 
 
 //* Recursive
@@ -24,4 +24,4 @@ let factorialR = n =>{
 
 }
 
-console.log(factorialR(5));
+// console.log(factorialR(5));

@@ -21,10 +21,10 @@ fibonacci = (n) => {
       second = fibo;
     }
   
-    return fibo;
+    return fibo;  
   };
   
-  //console.log(fibonacci(100));
+//   console.log(fibonacci(100));
   
   //* Factorial Recursive
   
@@ -39,5 +39,4 @@ fibonacci = (n) => {
   
   }
   
-  console.log(fibonacciRecursive(50));
-  
+  console.log(fibonacciRecursive(10));

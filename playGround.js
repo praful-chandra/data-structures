@@ -50,3 +50,47 @@
 //     space--;
 
 // }
+
+// let a = [1,2]
+// let b = [2]
+
+// let c = a.filter(val=> !b.includes(val))
+
+// console.log(c);
+
+
+// [                 Space   Stars  Index
+//     '     *     ', 5        1       1
+//     '    ***    ', 4        3       2
+//     '   *****   ', 3        5       3
+//     '  *******  ', 2        7       4
+//     ' ********* ', 1        9       5  
+//     '***********'  0        11      6
+//   ]
+
+let n = 6;
+spaces = n-1;
+let strArr = [];
+for(let i = 1 ; i <= n ;i++){
+let str = "";
+    for(let j = spaces ;j > 0 ;j--){
+        str += " ";
+    }
+
+    for(let k = i*2-1 ; k  > 0 ; k--){
+        str += "*";
+    }
+
+    for(let j = spaces ;j > 0 ;j--){
+        str += " ";
+    }
+
+    spaces --;
+
+strArr.push(str);
+str = "";
+}
+
+
+console.log(strArr);
+

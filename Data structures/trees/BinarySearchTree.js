@@ -64,11 +64,7 @@ class BST {
 
 
 
-  remove(value) {
-      
 
-
-  }
 }
 
 const tree = new BST();
